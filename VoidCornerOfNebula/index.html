@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Void corner of nebula</title>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <script src='halo.js'></script>
+    <script src='aframe-effects.js'></script>
+    <script src='musicCube.js'></script>
+
+  </head>
+  <body>
+
+<a-scene
+        antialias="true"
+        effects=" bloom"
+        bloom="strength: 1.5; radius:0.4; threshold: 0.0"
+>
+
+      <a-assets>
+        <audio id="song" src="starStory.mp3" preload="auto"></audio>
+      </a-assets>
+
+      <a-entity id="audio" sound="src: #song; autoplay: true" ></a-entity>
+        <a-entity
+        position='0 0 0'
+        audioSource='#audio'
+        material="shader: flat; transparent: true; color: #ffffff"
+        fractal='
+        x: (Math.cos(t * 0.01) * 5500) + Math.random()*1000;
+        y: (Math.sin(t * 0.01) * 5500) + Math.random()*1000;
+        z: Math.random()*300;
+        colors: #000000, #0b2826, #174f4b, #227771, #61d1ca, #b0e8e4, #ffffff;
+        scale: 0.1;
+        pointSize: 1;
+        points: 5000;'
+        ></a-entity>
+    <a-entity id="audio" sound="src: #song; autoplay: true" ></a-entity>
+    <a-entity  geometry="primitive: sphere; radius: 500;" material="shader: flat; transparent: true; color: #8AB1FF"
+              light="type: directional; color: #0066FF; intensity: 0.6" position="0 4000 5000"></a-entity>
+    <a-entity id="sun" cube  audioSource='#audio'  material="shader: flat ;color: #39c5bb "></a-entity>
+      <a-sky src="nebula.jpg" rotation="0 0 0" color='#666666'></a-sky>
+    </a-scene>
+
+
+
+  </body>
+</html>
